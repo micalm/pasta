@@ -6,6 +6,16 @@
             </span>
         </div>
         <div class="nav-right">
+            @if (Route::currentRouteName() === 'pasta.show')
+            <span class="nav-item">
+                <button
+                    class="button copy-link-button"
+                    type="button"
+                >
+                Copy link
+                </button>
+            </span>
+            @endif
             <span class="nav-item">
                 @include('components.select', [
                     'class' => 'language-select',
@@ -25,6 +35,9 @@
                     @else
                     value="Anonymous"
                     @endif
+                    @if (Route::currentRouteName() === 'pasta.show')
+                    readonly
+                    @endif
                     minlength="1"
                     maxlength="255"
                 >
@@ -43,7 +56,13 @@
                 <button
                     class="button save-button"
                     type="button"
-                >Save</button>
+                >
+                @if (Route::currentRouteName() === 'pasta.show')
+                Update
+                @else
+                Save
+                @endif
+                </button>
             </span>
         </div>
     </nav>

@@ -1252,6 +1252,10 @@ input{
 .button.save-button{
   margin-right: 0.75rem;
 }
+.button.copy-link-button{
+  display: inline-block;
+  width: 7rem;
+}
 
 input, .select, .button {
   height: 32px;
