@@ -222,6 +222,10 @@ input {
     &.save-button {
         @apply mr-3
     }
+
+    &.copy-link-button {
+        @apply inline-block w-28
+    }
 }
 
 input, .select, .button {

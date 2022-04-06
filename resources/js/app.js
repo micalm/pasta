@@ -60,6 +60,20 @@ saveButton.addEventListener('click', async function () {
 });
 
 /**
+ * Copy link
+ */
+let copyLinkButton = document.querySelector('.copy-link-button')
+copyLinkButton.addEventListener('click', function () {
+    navigator.clipboard.writeText(window.location.href)
+    copyLinkButton.innerText = 'Copied!!!'
+    setTimeout(function () {
+        copyLinkButton.innerText = 'Copy link'
+    }, 1500)
+
+
+})
+
+/**
  * About modal
  */
 let info = document.querySelector('.info-trigger')
