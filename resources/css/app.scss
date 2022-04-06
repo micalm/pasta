@@ -11,6 +11,10 @@
     --select-arrow: var(--select-border);
   }
 
+/**
+ * GENERAL SITE STYLES AND FUNCTIONS
+ */
+
 html, body {
     @apply font-sans bg-nord-night-base text-nord-storm-base h-full
 }
@@ -110,6 +114,9 @@ header {
     @apply bg-nord-frost-bluer
 }
 
+/**
+ * FORMS
+ */
 // Custom select - https://moderncss.dev/custom-select-styles-with-pure-css/
 select {
     appearance: none;
@@ -225,5 +232,38 @@ input, .select, .button {
 input, select {
     &.highlight {
         @apply bg-nord-storm-lighter text-nord-night-base z-50 pointer-events-none;
+    }
+}
+
+/**
+ * ERROR PAGES
+ */
+.error-container {
+    @apply h-full w-full
+}
+.error-human {
+    @apply grid grid-cols-1 h-1/2 w-full place-content-center place-items-center;
+
+    .error-container {
+        @apply w-2/3 md:w-full text-center
+    }
+
+    .error-head {
+        @apply text-7xl -mt-16 mb-16
+    }
+
+    .error-desc {
+        @apply text-3xl
+    }
+
+    .error-link {
+        @apply text-base;
+    }
+}
+
+.error-techie {
+    @apply fixed text-right bottom-0 right-0 m-2;
+    .error-message {
+        @apply text-sm
     }
 }
