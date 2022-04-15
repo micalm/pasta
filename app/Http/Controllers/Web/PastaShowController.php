@@ -24,14 +24,14 @@ class PastaShowController extends Controller
         $pasta = Pasta::findOrFail($uuid);
 
         if ($key === null && $pasta->encrypted) {
-            throw new NotFoundHttpException();
+            throw new NotFoundHttpException('Pasta not found.');
         }
 
         if (!empty($key)) {
             try {
                 $pasta = Pasta::decrypt($pasta, $key);
             } catch (DecryptException $e) {
-                throw new NotFoundHttpException();
+                throw new NotFoundHttpException('Pasta not found.');
             }
         }
 

@@ -20,6 +20,10 @@ class Pasta extends Model
         'language',
     ];
 
+    protected $hidden = [
+        'salt',
+    ];
+
     protected $casts = [
         'encrypted' => 'boolean',
     ];
