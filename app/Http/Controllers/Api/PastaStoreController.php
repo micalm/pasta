@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Models\Pasta;
 
@@ -26,11 +27,19 @@ class PastaStoreController extends Controller
 
     public function handle(Request $request)
     {
-        $this->validate($request, $this->rules);
+        $validator = Validator::make(
+            $request->all(),
+            $this->rules,
+        );
+
+        if ($validator->fails()) {
+            abort(422, join(' ', $validator->errors()->all()));
+        }
 
         $pasta = new Pasta([
             'author' => $request->author,
             'content' => $request->content,
+            'language' => $request->language,
             'encrypted' => $request->has('key'),
         ]);
 
@@ -38,7 +47,7 @@ class PastaStoreController extends Controller
             try {
                 $pasta = Pasta::encrypt($pasta, $request->key);
             } catch (\Exception $e) {
-                throw $e;
+                abort(500);
             }
         }
 
