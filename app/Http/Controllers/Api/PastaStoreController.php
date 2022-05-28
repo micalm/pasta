@@ -37,6 +37,7 @@ class PastaStoreController extends Controller
         }
 
         $pasta = new Pasta([
+            'parent_id' => $request->parent_id,
             'author' => $request->author,
             'content' => $request->content,
             'language' => $request->language,
