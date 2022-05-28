@@ -114,6 +114,33 @@ header {
     @apply bg-nord-frost-bluer
 }
 
+.pasta-show {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "pasta-container pasta-info";
+    width: 100vw;
+    height: 100vh;
+
+    & .pasta-container {
+        grid-area: pasta-container;
+    }
+    & .pasta-info {
+        grid-area: pasta-info;
+        @apply border-l-2 border-l-nord-night-light p-4 text-sm;
+
+        & li {
+            white-space: nowrap;
+
+            & strong {
+                @apply font-mono;
+            }
+        }
+    }
+}
+
 /**
  * FORMS
  */
