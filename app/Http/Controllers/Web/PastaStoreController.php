@@ -29,6 +29,7 @@ class PastaStoreController extends Controller
         $this->validate($request, $this->rules);
 
         $pasta = new Pasta([
+            'parent_id' => $request->parent_id,
             'author' => $request->author,
             'content' => $request->content,
             'language' => $request->language,

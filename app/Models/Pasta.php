@@ -15,6 +15,7 @@ class Pasta extends Model
     protected $primaryKey = 'uuid';
 
     protected $fillable = [
+        'parent_id',
         'author',
         'content',
         'language',
