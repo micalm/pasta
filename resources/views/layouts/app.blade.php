@@ -13,6 +13,12 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ebcb8b">
     <meta name="msapplication-TileColor" content="#ffc40d">
     <meta name="theme-color" content="#eceff4">
+    <script async defer
+        data-website-id="223d80a7-0676-4c32-a130-f433a3844e1b"
+        data-do-not-track="true"
+        data-domains="pasta.mical.cloud"
+        src="https://umami.mical.cloud/umami.js"
+    ></script>
 </head>
 <body>
     @include('app/header')
