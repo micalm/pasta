@@ -35,6 +35,11 @@ class PastaShowController extends Controller
             }
         }
 
+        // @todo handle first show of burn-on-read pastas for the creator
+        // if ($pasta->burn_on_read) {
+        //     $pasta->delete();
+        // }
+
         return view('pasta.show', compact('pasta'));
     }
 }

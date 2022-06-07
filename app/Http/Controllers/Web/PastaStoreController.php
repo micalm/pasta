@@ -34,6 +34,8 @@ class PastaStoreController extends Controller
             'content' => $request->content,
             'language' => $request->language,
             'encrypted' => $request->has('key'),
+            // @todo handle first show of burn-on-read pastas for the creator
+            'burn_on_read' => false //$request->burn_on_read ?? false,
         ]);
 
         if ($request->has('key') && $request->key !== null) {
