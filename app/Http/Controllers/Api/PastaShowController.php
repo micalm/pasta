@@ -39,6 +39,9 @@ class PastaShowController extends Controller
             }
         }
 
+        if ($pasta->burn_on_read) {
+            $pasta->delete();
+        }
         return $pasta;
     }
 }

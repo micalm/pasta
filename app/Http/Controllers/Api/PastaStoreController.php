@@ -42,6 +42,7 @@ class PastaStoreController extends Controller
             'content' => $request->content,
             'language' => $request->language,
             'encrypted' => $request->has('key'),
+            'burn_on_read' => $request->burn_on_read ?? false,
         ]);
 
         if ($request->has('key')) {

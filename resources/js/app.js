@@ -42,6 +42,7 @@ let saveButton = document.querySelector('.save-button')
 let author = document.querySelector('.author-input')
 let key = document.querySelector('.key-input')
 let parentId = document.querySelector('.parentid-input')
+let burnOnRead = document.querySelector('.burn-on-read-input');
 
 saveButton.addEventListener('click', async function () {
     if (!author.reportValidity() || !key.reportValidity()) {
@@ -54,6 +55,7 @@ saveButton.addEventListener('click', async function () {
         language: languageSelector.value,
         author: author.value,
         key: key.value,
+        burn_on_read: burnOnRead.checked,
     }
 
     let response = await axios.post('/p/', pasta);
