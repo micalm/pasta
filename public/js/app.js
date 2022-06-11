@@ -107,16 +107,20 @@ saveButton.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__
  */
 
 var copyLinkButton = document.querySelector('.copy-link-button');
-copyLinkButton.addEventListener('click', function () {
-  navigator.clipboard.writeText(window.location.href);
-  copyLinkButton.innerText = 'Copied!!!';
-  setTimeout(function () {
-    copyLinkButton.innerText = 'Copy link';
-  }, 1500);
-});
+
+if (copyLinkButton !== null) {
+  copyLinkButton.addEventListener('click', function () {
+    navigator.clipboard.writeText(window.location.href);
+    copyLinkButton.innerText = 'Copied!!!';
+    setTimeout(function () {
+      copyLinkButton.innerText = 'Copy link';
+    }, 1500);
+  });
+}
 /**
  * About modal
  */
+
 
 var info = document.querySelector('.info-trigger');
 var overlay = document.querySelector('.modal-overlay');
@@ -131,6 +135,7 @@ info.addEventListener('click', function () {
 
 var help = document.querySelector('.help-trigger');
 help.addEventListener('click', function () {
+  console.log('HELP');
   document.querySelector('body').classList.add('modal-open');
   document.querySelector('.modal-overlay').classList.add('modal-open');
   document.querySelector('.help-modal').classList.add('modal-open');
