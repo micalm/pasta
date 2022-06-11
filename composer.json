@@ -1,9 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "micalm/pasta",
+    "description": "Pasta is a (yet another) opinionated pastebin pastabin, written using Laravel.",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Mateusz Micał",
+            "email": "mateusz@mical.pl"
+        }
+    ],
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
@@ -60,6 +65,4 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
 }
