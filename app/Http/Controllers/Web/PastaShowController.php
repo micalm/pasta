@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\Encryption\DecryptException;
 use App\Http\Controllers\Controller;
 use App\Models\Pasta;
@@ -19,7 +20,7 @@ class PastaShowController extends Controller
         //
     }
 
-    public function handle($uuid, $key = null)
+    public function handle(Request $request, $uuid, $key = null)
     {
         $pasta = Pasta::findOrFail($uuid);
 
@@ -35,10 +36,10 @@ class PastaShowController extends Controller
             }
         }
 
-        // @todo handle first show of burn-on-read pastas for the creator
-        // if ($pasta->burn_on_read) {
-        //     $pasta->delete();
-        // }
+        $burnableFirstView = $request->session()->pull('firstView');
+        if ($pasta->burn_on_read && $burnableFirstView !== $pasta->uuid) {
+            $pasta->delete();
+        }
 
         return view('pasta.show', compact('pasta'));
     }

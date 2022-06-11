@@ -47,7 +47,7 @@
     </div>
     <div class="side-item">
         <label>
-            <input type="checkbox" value="" class="input-checkbox burn-on-read-input">
+            <input type="checkbox" name="burn_on_read" value="true" class="input-checkbox burn-on-read-input">
             Burn on read
         </label>
     </div>
@@ -68,7 +68,15 @@
         <h2>{{ __('Details') }}</h2>
         <span>Created: <strong>{{ $pasta->created_at }}</strong></span>
         <span>Expires: <strong>{{ $pasta->expires ?? 'Never' }}</strong></span>
-        <span>Burn on read: <strong>{{ $pasta->burn_on_read ? 'Yes' : 'No' }}</strong></span>
+        <span>
+            Burn on read: <strong>{{ $pasta->burn_on_read ? 'Yes' : 'No' }}</strong>
+            @if ($pasta->burn_on_read)
+            <br>
+            <small>
+                First view of this pasta (except the first preview by pasta author) will <strong>permanently delete it</strong>.
+            </small>
+            @endif
+        </span>
         @if ($pasta->parent)
         <span>Parent: <a href="{{ route('pasta.show', $pasta->parent_id) }}"><strong>{{ $pasta->parent->uuid }}</strong></a></span>
         @endif
