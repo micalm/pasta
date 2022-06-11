@@ -41,6 +41,8 @@ languageSelector.addEventListener('change', function () {
 let saveButton = document.querySelector('.save-button')
 let author = document.querySelector('.author-input')
 let key = document.querySelector('.key-input')
+let parentId = document.querySelector('.parentid-input')
+
 saveButton.addEventListener('click', async function () {
     if (!author.reportValidity() || !key.reportValidity()) {
         return false
@@ -48,6 +50,7 @@ saveButton.addEventListener('click', async function () {
 
     const pasta = {
         content: cm.getDoc().getValue(),
+        parent_id: parentId ? parentId.value : null,
         language: languageSelector.value,
         author: author.value,
         key: key.value,

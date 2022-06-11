@@ -5,16 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --select-border: #777;
-    --select-focus: blue;
-    --select-arrow: var(--select-border);
-  }
-
 /**
  * GENERAL SITE STYLES AND FUNCTIONS
  */
-
 html, body {
     @apply font-sans bg-nord-night-base text-nord-storm-base h-full
 }
@@ -131,11 +124,20 @@ header {
         grid-area: pasta-info;
         @apply border-l-2 border-l-nord-night-light p-4 text-sm;
 
-        & li {
-            white-space: nowrap;
+        .side-item {
+            @apply block w-full mb-2;
+        }
 
-            & strong {
-                @apply font-mono;
+        .pasta-details {
+            h2 {
+                @apply text-center text-xl mt-8 mb-4;
+            }
+            span {
+                @apply block w-full pb-1 mb-2 border-b border-b-nord-night-light;
+
+                &:last-child {
+                    @apply border-none;
+                }
             }
         }
     }
@@ -144,127 +146,31 @@ header {
 /**
  * FORMS
  */
-// Custom select - https://moderncss.dev/custom-select-styles-with-pure-css/
-select {
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    margin: 0;
-    width: 100%;
-    font-family: inherit;
-    font-size: inherit;
-    cursor: inherit;
-    line-height: inherit;
-    z-index: 1;
-    outline: none;
-    height: 32px;
-    @apply py-1
+.input,
+.select,
+.button {
+    @apply w-full h-10 bg-nord-night-light text-sm border border-nord-night-light
+    focus:border-nord-night-lightest focus:ring-0 focus:outline-none;
 }
 
 .select {
-    display: inline-grid;
-    grid-template-areas: "select";
-    align-items: center;
-    position: relative;
+    @apply pl-2;
+}
 
-    select,
-    &::after {
-        grid-area: select;
+.input-checkbox {
+    @apply h-6 w-6 mr-2 bg-nord-night-light text-nord-night-lightest ring-0 shadow-none outline-none border border-nord-night-light
+    checked:bg-nord-night-light focus:ring-0 focus:shadow-none focus:outline-none focus:border-nord-night-lightest;
+
+    &:focus {
+        box-shadow: none !important;
     }
 
-    min-width: 15ch;
-    max-width: 30ch;
-
-    cursor: pointer;
-    line-height: 1.1;
-
-    &:not(.select--multiple)::after {
-        content: "";
-        justify-self: end;
-        width: 0.8em;
-        height: 0.5em;
-        background-color: var(--select-arrow);
-        clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-    }
-
-    @apply bg-nord-night-lighter pr-2 pl-1
-}
-
-// Interim solution until :focus-within has better support
-select:focus + .focus {
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    right: -1px;
-    bottom: -1px;
-    border: 2px solid var(--select-focus);
-    border-radius: inherit;
-}
-
-select[multiple] {
-padding-right: 0;
-height: 6rem;
-
-option {
-    white-space: normal;
-    outline-color: var(--select-focus);
-}
-
-    &:not(:disabled) option {
-        border-radius: 12px;
-        transition: 120ms all ease-in;
-
-        &:checked {
-            background: linear-gradient(hsl(242, 61%, 76%), hsl(242, 61%, 71%));
-            padding-left: 0.5em;
-            color: black !important;
-        }
-    }
-}
-
-.select--disabled {
-    cursor: not-allowed;
-    background-color: #eee;
-    background-image: linear-gradient(to top, #ddd, #eee 33%);
 }
 
 label {
-    font-size: 1.125rem;
-    font-weight: 500;
+    @apply w-full h-10 text-sm leading-6 inline-flex items-center;
 }
 
-.select + label {
-    margin-top: 2rem;
-}
-
-input {
-    @apply relative bg-nord-night-lighter text-nord-storm-base px-4 py-1
-}
-
-.button {
-    @apply bg-nord-night-lighter text-nord-storm-base
-        hover:bg-nord-frost-green hover:text-nord-night-base
-        transition-colors px-4 py-1;
-
-    &.save-button {
-        @apply mr-3
-    }
-
-    &.copy-link-button {
-        @apply inline-block w-28
-    }
-}
-
-input, .select, .button {
-    height: 32px;
-    @apply text-sm focus:outline-none active:outline-none focus:bg-nord-night-lightest active:bg-nord-night-lightest
-}
-
-input, select {
-    &.highlight {
-        @apply bg-nord-storm-lighter text-nord-night-base z-50 pointer-events-none;
-    }
-}
 
 /**
  * ERROR PAGES
