@@ -21,6 +21,7 @@ class Pasta extends Model
         'author',
         'content',
         'language',
+        'burn_on_read',
     ];
 
     protected $hidden = [
@@ -29,6 +30,7 @@ class Pasta extends Model
 
     protected $casts = [
         'encrypted' => 'boolean',
+        'burn_on_read' => 'boolean',
     ];
 
     public function parent()
