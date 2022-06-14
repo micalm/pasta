@@ -64,6 +64,8 @@ var saveButton = document.querySelector('.save-button');
 var author = document.querySelector('.author-input');
 var key = document.querySelector('.key-input');
 var parentId = document.querySelector('.parentid-input');
+var burnOnRead = document.querySelector('.burn-on-read-input');
+var expiresAt = document.querySelector('.expires-input');
 saveButton.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
   var pasta, response;
   return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -83,7 +85,9 @@ saveButton.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__
             parent_id: parentId ? parentId.value : null,
             language: languageSelector.value,
             author: author.value,
-            key: key.value
+            key: key.value,
+            burn_on_read: burnOnRead.checked,
+            expires_at: expiresAt.value
           };
           _context.next = 5;
           return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/p/', pasta);
