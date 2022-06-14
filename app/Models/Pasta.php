@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use SebastianBergmann\Diff\Differ;
 use SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder as Builder;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Traits\UsesUuidKeys;
 use App\Encryption\PasswordEncrypter;
 
@@ -22,6 +24,7 @@ class Pasta extends Model
         'content',
         'language',
         'burn_on_read',
+        'expires_at',
     ];
 
     protected $hidden = [
@@ -32,6 +35,21 @@ class Pasta extends Model
         'encrypted' => 'boolean',
         'burn_on_read' => 'boolean',
     ];
+
+    protected static function booted()
+    {
+        static::retrieved(function (Pasta $pasta) {
+            // Immediately delete when fetched after expiry
+            if (!empty($pasta->expires_at)) {
+                if (now()->greaterThanOrEqualTo(new Carbon($pasta->expires_at))) {
+                    $pasta->delete();
+                    throw new NotFoundHttpException('Pasta not found.');
+                }
+            }
+
+            return null;
+        });
+    }
 
     public function parent()
     {

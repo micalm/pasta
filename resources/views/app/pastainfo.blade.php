@@ -46,6 +46,14 @@
         >
     </div>
     <div class="side-item">
+        <input
+            class="input expires-input"
+            type="datetime-local"
+            name="expires_at"
+            min="{{ now()->toDateTimeLocalString() }}"
+        >
+    </div>
+    <div class="side-item">
         <label>
             <input type="checkbox" name="burn_on_read" value="true" class="input-checkbox burn-on-read-input">
             Burn on read
@@ -67,7 +75,7 @@
     <div class="pasta-details side-item">
         <h2>{{ __('Details') }}</h2>
         <span>Created: <strong>{{ $pasta->created_at }}</strong></span>
-        <span>Expires: <strong>{{ $pasta->expires ?? 'Never' }}</strong></span>
+        <span>Expires: <strong>{{ $pasta->expires_at ?? 'Never' }}</strong></span>
         <span>
             Burn on read: <strong>{{ $pasta->burn_on_read ? 'Yes' : 'No' }}</strong>
             @if ($pasta->burn_on_read)
