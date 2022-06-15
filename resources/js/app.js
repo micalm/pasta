@@ -42,7 +42,7 @@ languageSelector.addEventListener('change', function () {
  */
 flatpickr(expirySelector, {
     enableTime: true,
-    dateFormat: "Z",
+    dateFormat: "Y-m-d H:i",
     altInput: true,
     altFormat: "Y-m-d H:i",
     minDate: new Date(),

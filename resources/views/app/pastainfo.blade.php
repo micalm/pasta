@@ -49,7 +49,7 @@
         <input
             class="input expires-input"
             name="expires_at"
-            placeholder="Expiration date (empty for never)"
+            placeholder="Expiration (UTC; empty for never)"
         >
     </div>
     <div class="side-item">
@@ -73,8 +73,8 @@
     @if (!empty($pasta))
     <div class="pasta-details side-item">
         <h2>{{ __('Details') }}</h2>
-        <span>Created: <strong>{{ $pasta->created_at }}</strong></span>
-        <span>Expires: <strong>{{ $pasta->expires_at ?? 'Never' }}</strong></span>
+        <span>Created: <strong>{{ $pasta->created_at . ' UTC' }}</strong></span>
+        <span>Expires: <strong>{{ $pasta->expires_at . ' UTC' ?? 'Never' }}</strong></span>
         <span>
             Burn on read: <strong>{{ $pasta->burn_on_read ? 'Yes' : 'No' }}</strong>
             @if ($pasta->burn_on_read)
