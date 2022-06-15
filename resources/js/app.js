@@ -1,8 +1,10 @@
 import axios from 'axios';
 import CodeMirror from 'codemirror';
 import './codemirror-langs';
+import flatpickr from "flatpickr";
 
 let languageSelector = document.querySelector('.language-select')
+let expirySelector = document.querySelector('.expires-input')
 
 let cm = CodeMirror.fromTextArea(document.getElementById('pasta'), {
     theme: 'nord',
@@ -33,6 +35,17 @@ function getChosenLanguage() {
 
 languageSelector.addEventListener('change', function () {
     cm.setOption('mode', getChosenLanguage())
+})
+
+/**
+ * Flatpickr for expiry datetime picking
+ */
+flatpickr(expirySelector, {
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    altInput: true,
+    altFormat: "Y-m-d H:i",
+    minDate: new Date(),
 })
 
 /**
