@@ -48,9 +48,8 @@
     <div class="side-item">
         <input
             class="input expires-input"
-            type="datetime-local"
             name="expires_at"
-            min="{{ now()->toDateTimeLocalString() }}"
+            placeholder="Expiration date (empty for never)"
         >
     </div>
     <div class="side-item">

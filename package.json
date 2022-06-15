@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@tailwindcss/forms": "^0.5.2",
-        "codemirror": "^5.65.2"
+        "codemirror": "^5.65.2",
+        "flatpickr": "^4.6.13"
     }
 }

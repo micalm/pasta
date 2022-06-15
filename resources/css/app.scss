@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&family=Fira+Mono:wght@400;500;700&display=swap');
 @import '~codemirror/lib/codemirror.css';
 @import '~codemirror/theme/nord.css';
+@import '~flatpickr/dist/flatpickr.css';
+@import './flatpickr_nord_dark.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
