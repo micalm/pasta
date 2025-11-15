@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**Pasta** is an opinionated pastebin application (or "pastabin") built with Laravel 9.x. It's a personal project that allows users to share code snippets and text content with optional encryption, syntax highlighting, burn-on-read functionality, and expiration dates.
+**Pasta** is an opinionated pastebin application (or "pastabin") built with Laravel 11.x LTS. It's a personal project that allows users to share code snippets and text content with optional encryption, syntax highlighting, burn-on-read functionality, and expiration dates.
 
 **Author:** Mateusz Micał (mateusz@mical.pl)
 **License:** MIT
@@ -22,25 +22,26 @@
 ## Technology Stack
 
 ### Backend
-- **Framework:** Laravel 9.x (PHP 8.0.2+)
+- **Framework:** Laravel 11.x LTS (PHP 8.2+) - Supported until 2026
 - **Database:** MySQL 8.0+ (other databases supported via Laravel)
 - **Encryption:** Sodium (libsodium) with Argon2id for key derivation
-- **Authentication:** Laravel Sanctum (for future user features)
-- **Debugging:** Laravel Telescope (development only)
+- **Authentication:** Laravel Sanctum 4.x (for future user features)
+- **Debugging:** Laravel Telescope 5.x (development only)
 
 ### Frontend
 - **CSS Framework:** Tailwind CSS 3.x with custom Nord theme
-- **Build Tool:** Laravel Mix (webpack wrapper)
-- **JavaScript:** Vanilla JS with Alpine.js patterns
+- **Build Tool:** Vite 7.x (modern, fast build tool)
+- **JavaScript:** ES6 Modules
 - **Code Editor:** CodeMirror 5.x
 - **Date Picker:** Flatpickr 4.x
+- **HTTP Client:** Axios 1.x
 - **Fonts:** Comfortaa (sans), Fira Mono (monospace)
 
 ### Development Tools
 - **Package Manager (PHP):** Composer
 - **Package Manager (JS):** npm
-- **Testing:** PHPUnit 9.5+
-- **Browser Sync:** For local development hot-reloading
+- **Testing:** PHPUnit 11.x
+- **HMR:** Vite Hot Module Replacement for instant updates
 
 ---
 
@@ -118,7 +119,7 @@ pasta/
 ├── package.json                         # JavaScript dependencies
 ├── phpunit.xml                          # PHPUnit configuration
 ├── tailwind.config.js                   # Tailwind CSS configuration
-└── webpack.mix.js                       # Laravel Mix build configuration
+└── vite.config.js                       # Vite build configuration
 ```
 
 ---
@@ -276,12 +277,11 @@ php artisan serve  # Serves at http://localhost:8000
 
 ### Asset Compilation
 ```bash
-npm run dev         # Quick development build
-npm run watch       # Watch for changes
-npm run production  # Minified production build (sets mix.version())
+npm run dev         # Start Vite dev server with HMR
+npm run build       # Production build with minification and optimization
 ```
 
-**Browser Sync:** In development, webpack.mix.js configures BrowserSync for `https://pasta.test`
+**Hot Module Replacement:** Vite provides instant HMR for CSS and JavaScript changes during development
 
 ### Database Management
 ```bash
@@ -393,12 +393,13 @@ colors: {
 
 ### Build Configuration
 
-**webpack.mix.js:**
-- Compiles `resources/js/app.js` → `public/js/app.js`
-- Compiles `resources/css/app.scss` → `public/css/app.css`
-- Extracts vendor libraries to separate bundle
-- Versioning enabled in production (`mix.version()`)
-- BrowserSync at `https://pasta.test` for local dev
+**vite.config.js:**
+- Compiles `resources/js/app.js` and `resources/css/app.scss` → `public/build/`
+- Automatic code-splitting and vendor chunking
+- Automatic asset versioning in production
+- Hot Module Replacement (HMR) for instant updates
+- Modern ES modules with optimized tree-shaking
+- SCSS preprocessing with modern-compiler API
 
 ### JavaScript Structure
 
