@@ -1,7 +1,14 @@
+import './bootstrap';
 import axios from 'axios';
 import CodeMirror from 'codemirror';
 import './codemirror-langs';
 import flatpickr from "flatpickr";
+
+// Import CSS
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/nord.css';
+import 'flatpickr/dist/flatpickr.css';
+import '../css/flatpickr_nord_dark.css';
 
 let languageSelector = document.querySelector('.language-select')
 let expirySelector = document.querySelector('.expires-input')
